@@ -1,18 +1,16 @@
-const fs = require('fs');
-const {range} = require('../lib/range');
-
-
 const isPrime = x => {
-    for (let i = 2; i< x; i ++) {
-        if (x %i === 0) {
+    if (x === 2 || x === 3) {
+        return true;
+    }
+    for (let i = 2; i < x; i++) {
+        if (x % i === 0) {
             return false;
         }
     }
     return true;
-}
+};
 
-const primeRange = (from, to) => range(from, to).filter(isPrime);
-
+const divisible = (x, y) => (x % y === 0 ? true : false);
 
 const primeFactors = x => {
     let f = 2;
@@ -20,11 +18,13 @@ const primeFactors = x => {
         if (x % e === 0) {
             console.log(e);
         }
-    })
+    }
+    return factors;
+};
+
+const printResult = number => {
+    console.log(`Prime factors of ${number} : ${primeFactors(number)}`);
+    console.log(`Max Prime factor - ${Math.max(...primeFactors(number))}`);
 }
 
-const number = 600851475143;
-// primeFactors(number);
-
-fs.writeFileSync('Prime_Number.txt', 
-primeRange(2, 1000));
+printResult(600851475143);
