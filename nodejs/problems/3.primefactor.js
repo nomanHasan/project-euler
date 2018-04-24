@@ -13,10 +13,18 @@ const isPrime = x => {
 const divisible = (x, y) => (x % y === 0 ? true : false);
 
 const primeFactors = x => {
-    let f = 2;
-    primeRange(f, x).forEach(e => {
-        if (x % e === 0) {
-            console.log(e);
+    let factors = [];
+    for (let i = 2; i < x; i++) {
+        if (isPrime(i) && divisible(x, i)) {
+            factors.push(i);
+
+            if (isPrime(x / i)) {
+                factors = [...factors, x / i];
+            } else {
+                const pf = primeFactors(x / i);
+                factors = [...factors, ...pf];
+            }
+            break;
         }
     }
     return factors;
