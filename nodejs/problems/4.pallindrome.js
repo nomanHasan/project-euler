@@ -19,7 +19,7 @@ const first = R.compose(sliceFirst, toString);
 const firstNumber = R.compose(toNumber, first);
 const firstNumberReverse = R.compose(toNumber, reverseString, first);
 
-const sliceMiddle = s => isEven(s) ? undefined : s.slice(s.length / 2, s.length / 2 + 1);
+const sliceMiddle = s => isEven(s.length) ? undefined : s.slice(s.length / 2, s.length / 2 + 1);
 const middle = R.compose(sliceMiddle, toString);
 
 const sliceLast = s => isEven(s) ? s.slice(s.length / 2) : s.slice(s.length / 2 + 1);
@@ -44,17 +44,29 @@ const paldMultipleOf23d = () => {
     if (firstNumberReverse(x) <= lastNumber(x)) {
         console.log("Smaller");
         return mirror(middle(x))(first(x));
-      } else {
+    } else {
         console.log("Bigger");
+        
         return mirrorNumber(x);
-      }
+    }
 }
 
 const n1 = 123453467;
 
+
+const firstMiddle = s => isEven(s)
+    ? first(s)
+    : first(s) + middle(s);
+const firstMiddleNumber = R.compose(toNumber, firstMiddle, toString);
+
+
 console.log(first(n1));
 console.log(middle(n1));
 console.log(last(n1));
+
+
+console.log(`firstMiddle - ${firstMiddleNumber(n1)}`);
+
 console.log(mirror(5)(321));
 console.log(isPalindrome(3219123))
 
