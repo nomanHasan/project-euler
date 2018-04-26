@@ -17,9 +17,11 @@ namespace _5.smallestMultiple
                 i ++;
             }
 
-            Console.WriteLine(i);
-
         }
+
+
+        // 232792560
+
 
         static bool isDividable20(int number) {
 
