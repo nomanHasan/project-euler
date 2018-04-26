@@ -1,27 +1,40 @@
 ﻿using System;
-using System.Linq;
 
-namespace prime
+namespace _7._10001st_prime
 {
     class Program
     {
         static void Main(string[] args)
         {
-            for (long i = 0; i < 600851475143; i++)
-            {
-                if (isPrime(i))
-                {
+            Console.WriteLine("Hello World!");
 
+            int i = 0;
+            int primeCount = 0;
+
+            while(true) {
+                i++;
+                if (isPrime(i)) {
+                    Console.WriteLine(i);
+                    primeCount++;
+                }
+
+                if (primeCount == 10001) {
+                    break;
                 }
             }
 
         }
 
+        
         static bool isPrime(long number)
         {
             if (number == 2 || number == 3)
             {
                 return true;
+            }
+
+            if (number == 1) {
+                return false;
             }
 
             for (long i = 2; i < number; i++)
