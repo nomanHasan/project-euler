@@ -15,7 +15,7 @@ namespace _14.longest_collatz_sequence
                 Console.WriteLine(i + " - " + l);
                 i ++;
 
-                if (i > 1000000) {
+                if (i > 20) {
                     break;
                 }
 
@@ -27,6 +27,9 @@ namespace _14.longest_collatz_sequence
             }
 
             Console.WriteLine("Max Collatz Sequence Number : "+ maxCollNumber + ", Length: " + maxNumber);
+
+            Console.WriteLine(collatz(910107));
+            Console.WriteLine(collatz(4096));
 
         }
 
@@ -41,6 +44,7 @@ namespace _14.longest_collatz_sequence
                 x = oddEq(number);
             }
 
+            Console.Write(x + " ");
             if (x > 1) {
                 length += collatz(x);
             } else {
